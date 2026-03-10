@@ -1,144 +1,68 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html>
 <head>
 <title>Gokul AI Tools</title>
-
-<style>
-
-body{
-font-family:Arial;
-margin:0;
-background:linear-gradient(135deg,#0f172a,#1e293b);
-color:white;
-text-align:center;
-}
-
-header{
-padding:40px;
-font-size:35px;
-font-weight:bold;
-}
-
-.container{
-margin-top:30px;
-}
-
-.tool{
-background:#1e293b;
-padding:25px;
-margin:15px;
-display:inline-block;
-border-radius:12px;
-width:220px;
-transition:0.3s;
-}
-
-.tool:hover{
-transform:scale(1.08);
-background:#334155;
-}
-
-button{
-margin-top:10px;
-padding:10px 18px;
-border:none;
-border-radius:6px;
-background:#22c55e;
-color:white;
-cursor:pointer;
-}
-
-input,textarea{
-padding:10px;
-width:250px;
-border:none;
-border-radius:6px;
-margin-top:10px;
-}
-
-#toolArea{
-margin-top:40px;
-}
-
-</style>
-
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<header>🤖 Gokul AI Tools</header>
+<header>
+<h1>🤖 Gokul AI Tools</h1>
+<p>Free AI tools for everyone</p>
+</header>
 
 <div class="container">
 
-<div class="tool">
+<div class="card">
 <h3>Caption Generator</h3>
-<p>Create social media captions</p>
-<button onclick="show('caption')">Open</button>
+<button onclick="showCaption()">Open</button>
 </div>
 
-<div class="tool">
+<div class="card">
 <h3>Resume Generator</h3>
-<p>Generate simple resume</p>
-<button onclick="show('resume')">Open</button>
+<button onclick="showResume()">Open</button>
 </div>
 
-<div class="tool">
+<div class="card">
 <h3>Grammar Corrector</h3>
-<p>Fix English sentences</p>
-<button onclick="show('grammar')">Open</button>
+<button onclick="showGrammar()">Open</button>
 </div>
 
-<div class="tool">
+<div class="card">
 <h3>Text to Image</h3>
-<p>Generate random image</p>
-<button onclick="show('image')">Open</button>
+<button onclick="showImage()">Open</button>
 </div>
 
 </div>
 
-<div id="toolArea"></div>
+<div id="tool"></div>
 <div id="result"></div>
 
 <script>
 
-function show(tool){
-
-if(tool==="caption"){
-document.getElementById("toolArea").innerHTML=
+function showCaption(){
+document.getElementById("tool").innerHTML=
 '<input id="topic" placeholder="Enter topic"><br><button onclick="caption()">Generate</button>';
 }
 
-if(tool==="resume"){
-document.getElementById("toolArea").innerHTML=
-'<input id="name" placeholder="Enter name"><br><input id="skill" placeholder="Enter skill"><br><button onclick="resume()">Generate</button>';
-}
-
-if(tool==="grammar"){
-document.getElementById("toolArea").innerHTML=
-'<textarea id="text" placeholder="Enter sentence"></textarea><br><button onclick="grammar()">Correct</button>';
-}
-
-if(tool==="image"){
-document.getElementById("toolArea").innerHTML=
-'<input id="idea" placeholder="Enter image idea"><br><button onclick="image()">Generate</button>';
-}
-
-}
-
 function caption(){
-
 let topic=document.getElementById("topic").value;
 
-let list=[
+let captions=[
 topic+" vibes only ✨",
-"Life is beautiful with "+topic,
+"Life is better with "+topic,
 topic+" makes everything special"
 ];
 
-let random=list[Math.floor(Math.random()*list.length)];
+let random=captions[Math.floor(Math.random()*captions.length)];
 
 document.getElementById("result").innerText=random;
+}
 
+function showResume(){
+document.getElementById("tool").innerHTML=
+'<input id="name" placeholder="Enter name"><br><input id="skill" placeholder="Enter skill"><br><button onclick="resume()">Generate</button>';
 }
 
 function resume(){
@@ -147,22 +71,32 @@ let name=document.getElementById("name").value;
 let skill=document.getElementById("skill").value;
 
 document.getElementById("result").innerText=
-"Name: "+name+" | Skills: "+skill+" | Hardworking and passionate person.";
+"Name: "+name+" | Skills: "+skill;
 
+}
+
+function showGrammar(){
+document.getElementById("tool").innerHTML=
+'<textarea id="text" placeholder="Enter sentence"></textarea><br><button onclick="grammar()">Correct</button>';
 }
 
 function grammar(){
 
 let text=document.getElementById("text").value;
 
-document.getElementById("result").innerText="Corrected sentence: "+text;
+document.getElementById("result").innerText="Corrected: "+text;
 
+}
+
+function showImage(){
+document.getElementById("tool").innerHTML=
+'<button onclick="image()">Generate Image</button>';
 }
 
 function image(){
 
 document.getElementById("result").innerHTML=
-"<img src='https://picsum.photos/300' style='margin-top:20px;border-radius:10px;'>";
+"<img src='https://picsum.photos/300'>";
 
 }
 
