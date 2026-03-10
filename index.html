@@ -1,91 +1,170 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>For You ❤️</title>
+<title>Gokul AI Tools</title>
 
 <style>
+
 body{
-background:black;
+font-family:Arial;
+margin:0;
+background:linear-gradient(135deg,#0f172a,#1e293b);
 color:white;
 text-align:center;
-font-family:Arial;
-margin-top:150px;
-overflow:hidden;
 }
 
-h1{
-font-size:40px;
-color:pink;
-animation: glow 2s infinite alternate;
+header{
+padding:40px;
+font-size:35px;
+font-weight:bold;
 }
 
-@keyframes glow{
-from{ text-shadow:0 0 10px pink;}
-to{ text-shadow:0 0 30px red;}
+.container{
+margin-top:30px;
 }
 
-.heart{
-position:absolute;
-color:red;
-font-size:25px;
-animation: fall 5s linear infinite;
+.tool{
+background:#1e293b;
+padding:25px;
+margin:15px;
+display:inline-block;
+border-radius:12px;
+width:220px;
+transition:0.3s;
 }
 
-@keyframes fall{
-0%{ transform:translateY(-100px);}
-100%{ transform:translateY(100vh);}
+.tool:hover{
+transform:scale(1.08);
+background:#334155;
 }
 
 button{
-padding:12px 25px;
-font-size:20px;
+margin-top:10px;
+padding:10px 18px;
 border:none;
-border-radius:10px;
-background:red;
+border-radius:6px;
+background:#22c55e;
 color:white;
 cursor:pointer;
-margin-top:20px;
 }
 
-button:hover{
-background:pink;
+input,textarea{
+padding:10px;
+width:250px;
+border:none;
+border-radius:6px;
+margin-top:10px;
 }
+
+#toolArea{
+margin-top:40px;
+}
+
 </style>
 
 </head>
 
 <body>
 
-<h1>Hi ❤️</h1>
+<header>🤖 Gokul AI Tools</header>
 
-<p>You are very special to me...</p>
+<div class="container">
 
-<p>I have one question for you 💖</p>
+<div class="tool">
+<h3>Caption Generator</h3>
+<p>Create social media captions</p>
+<button onclick="show('caption')">Open</button>
+</div>
 
-<h2>Will you be mine? 💍</h2>
+<div class="tool">
+<h3>Resume Generator</h3>
+<p>Generate simple resume</p>
+<button onclick="show('resume')">Open</button>
+</div>
 
-<button onclick="yes()">Yes 💖</button>
+<div class="tool">
+<h3>Grammar Corrector</h3>
+<p>Fix English sentences</p>
+<button onclick="show('grammar')">Open</button>
+</div>
+
+<div class="tool">
+<h3>Text to Image</h3>
+<p>Generate random image</p>
+<button onclick="show('image')">Open</button>
+</div>
+
+</div>
+
+<div id="toolArea"></div>
+<div id="result"></div>
 
 <script>
 
-function yes(){
-alert("You just made Gokul the happiest person ❤️");
+function show(tool){
+
+if(tool==="caption"){
+document.getElementById("toolArea").innerHTML=
+'<input id="topic" placeholder="Enter topic"><br><button onclick="caption()">Generate</button>';
 }
 
-function createHeart(){
-const heart=document.createElement("div");
-heart.classList.add("heart");
-heart.innerHTML="❤️";
-heart.style.left=Math.random()*100+"vw";
-heart.style.animationDuration=(3+Math.random()*2)+"s";
-document.body.appendChild(heart);
-
-setTimeout(()=>{
-heart.remove();
-},5000);
+if(tool==="resume"){
+document.getElementById("toolArea").innerHTML=
+'<input id="name" placeholder="Enter name"><br><input id="skill" placeholder="Enter skill"><br><button onclick="resume()">Generate</button>';
 }
 
-setInterval(createHeart,300);
+if(tool==="grammar"){
+document.getElementById("toolArea").innerHTML=
+'<textarea id="text" placeholder="Enter sentence"></textarea><br><button onclick="grammar()">Correct</button>';
+}
+
+if(tool==="image"){
+document.getElementById("toolArea").innerHTML=
+'<input id="idea" placeholder="Enter image idea"><br><button onclick="image()">Generate</button>';
+}
+
+}
+
+function caption(){
+
+let topic=document.getElementById("topic").value;
+
+let list=[
+topic+" vibes only ✨",
+"Life is beautiful with "+topic,
+topic+" makes everything special"
+];
+
+let random=list[Math.floor(Math.random()*list.length)];
+
+document.getElementById("result").innerText=random;
+
+}
+
+function resume(){
+
+let name=document.getElementById("name").value;
+let skill=document.getElementById("skill").value;
+
+document.getElementById("result").innerText=
+"Name: "+name+" | Skills: "+skill+" | Hardworking and passionate person.";
+
+}
+
+function grammar(){
+
+let text=document.getElementById("text").value;
+
+document.getElementById("result").innerText="Corrected sentence: "+text;
+
+}
+
+function image(){
+
+document.getElementById("result").innerHTML=
+"<img src='https://picsum.photos/300' style='margin-top:20px;border-radius:10px;'>";
+
+}
 
 </script>
 
