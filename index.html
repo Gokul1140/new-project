@@ -1,52 +1,93 @@
- <body style="text-align:center; font-family:Arial;">
+<!DOCTYPE html>
+<html>
+<head>
+<title>For You ❤️</title>
 
-    <h1>Hello Students 🔥</h1>
-    <p>Welcome to our class website.</p>
-    <p>This website is created by Gokul.</p>
+<style>
+body{
+background:black;
+color:white;
+text-align:center;
+font-family:Arial;
+margin-top:150px;
+overflow:hidden;
+}
 
-    <h2>Attendance for Today</h2>
-    <p>Please mark your attendance by clicking the checkbox next to your name.</p>
+h1{
+font-size:40px;
+color:pink;
+animation: glow 2s infinite alternate;
+}
 
-    <table>
-        <tr>
-            <th>Student Name</th>
-            <th>Present</th>
-        </tr>
-        <tr><td>gokul</td><td><input type="checkbox"></td></tr>
-        <tr><td>gopika</td><td><input type="checkbox"></td></tr>
-        <tr><td>Student 3</td><td><input type="checkbox"></td></tr>
-        <tr><td>Student 4</td><td><input type="checkbox"></td></tr>
-        <tr><td>Student 5</td><td><input type="checkbox"></td></tr>
-        <tr><td>Student 6</td><td><input type="checkbox"></td></tr>
-        <tr><td>Student 7</td><td><input type="checkbox"></td></tr>
-        <tr><td>Student 8</td><td><input type="checkbox"></td></tr>
-        <tr><td>Student 9</td><td><input type="checkbox"></td></tr>
-        <tr><td>Student 10</td><td><input type="checkbox"></td></tr>
-        <tr><td>Student 11</td><td><input type="checkbox"></td></tr>
-        <tr><td>Student 12</td><td><input type="checkbox"></td></tr>
-        <tr><td>Student 13</td><td><input type="checkbox"></td></tr>
-        <tr><td>Student 14</td><td><input type="checkbox"></td></tr>
-        <tr><td>Student 15</td><td><input type="checkbox"></td></tr>
-        <tr><td>Student 16</td><td><input type="checkbox"></td></tr>
-        <tr><td>Student 17</td><td><input type="checkbox"></td></tr>
-        <tr><td>Student 18</td><td><input type="checkbox"></td></tr>
-        <tr><td>Student 19</td><td><input type="checkbox"></td></tr>
-        <tr><td>Student 20</td><td><input type="checkbox"></td></tr>
-        <tr><td>Student 21</td><td><input type="checkbox"></td></tr>
-        <tr><td>Student 22</td><td><input type="checkbox"></td></tr>
-        <tr><td>Student 23</td><td><input type="checkbox"></td></tr>
-        <tr><td>Student 24</td><td><input type="checkbox"></td></tr>
-        <tr><td>Student 25</td><td><input type="checkbox"></td></tr>
-        <tr><td>Student 26</td><td><input type="checkbox"></td></tr>
-        <tr><td>Student 27</td><td><input type="checkbox"></td></tr>
-        <tr><td>Student 28</td><td><input type="checkbox"></td></tr>
-        <tr><td>Student 29</td><td><input type="checkbox"></td></tr>
-        <tr><td>Student 30</td><td><input type="checkbox"></td></tr>
-        <tr><td>Student 31</td><td><input type="checkbox"></td></tr>
-        <tr><td>Student 32</td><td><input type="checkbox"></td></tr>
-        <tr><td>Student 33</td><td><input type="checkbox"></td></tr>
-        <tr><td>Student 34</td><td><input type="checkbox"></td></tr>
-        <tr><td>Student 35</td><td><input type="checkbox"></td></tr>
-    </table>
+@keyframes glow{
+from{ text-shadow:0 0 10px pink;}
+to{ text-shadow:0 0 30px red;}
+}
+
+.heart{
+position:absolute;
+color:red;
+font-size:25px;
+animation: fall 5s linear infinite;
+}
+
+@keyframes fall{
+0%{ transform:translateY(-100px);}
+100%{ transform:translateY(100vh);}
+}
+
+button{
+padding:12px 25px;
+font-size:20px;
+border:none;
+border-radius:10px;
+background:red;
+color:white;
+cursor:pointer;
+margin-top:20px;
+}
+
+button:hover{
+background:pink;
+}
+</style>
+
+</head>
+
+<body>
+
+<h1>Hi ❤️</h1>
+
+<p>You are very special to me...</p>
+
+<p>I have one question for you 💖</p>
+
+<h2>Will you be mine? 💍</h2>
+
+<button onclick="yes()">Yes 💖</button>
+
+<script>
+
+function yes(){
+alert("You just made Gokul the happiest person ❤️");
+}
+
+function createHeart(){
+const heart=document.createElement("div");
+heart.classList.add("heart");
+heart.innerHTML="❤️";
+heart.style.left=Math.random()*100+"vw";
+heart.style.animationDuration=(3+Math.random()*2)+"s";
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},5000);
+}
+
+setInterval(createHeart,300);
+
+</script>
 
 </body>
+</html>
